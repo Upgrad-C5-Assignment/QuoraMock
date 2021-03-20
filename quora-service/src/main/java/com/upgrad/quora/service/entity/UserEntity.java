@@ -12,6 +12,7 @@ import java.io.Serializable;
 /**
  * This class maps to users table in database
  * @author saif
+ * @author sanatt
  */
 @Entity
 @Table(name = "users")
@@ -19,7 +20,7 @@ import java.io.Serializable;
         {
                 @NamedQuery(name = "userByUuid", query = "select u from UserEntity u where u.uuid = :uuid"),
 
-                @NamedQuery(name = "userByUserName", query = "select u from UserEntity u where u.userName =:username"),
+                @NamedQuery(name = "userByUsername", query = "select u from UserEntity u where u.userName =:username"),
 
                 @NamedQuery(name = "userByEmail", query = "select u from UserEntity u where u.email =:email")
 
