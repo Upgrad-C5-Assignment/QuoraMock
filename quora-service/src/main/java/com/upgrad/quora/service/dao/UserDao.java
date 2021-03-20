@@ -4,9 +4,11 @@ import com.upgrad.quora.service.entity.UserAuthEntity;
 import com.upgrad.quora.service.entity.UserEntity;
 import org.springframework.stereotype.Repository;
 
+import javax.jws.soap.SOAPBinding;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import java.time.ZonedDateTime;
 
 /**
  * Dao class which deals with database logic related to User entity
@@ -62,10 +64,10 @@ public class UserDao {
         }
     }
 
-    public UserAuthEntity getUserAuthByToken(final String accessToken) {
+    public UserAuthEntity getUserAuthEntityByToken(final String accessToken) {
         try {
             UserAuthEntity authEntity = entityManager.createNamedQuery("userAuthByAccessToken", UserAuthEntity.class)
-                    .setParameter("token", accessToken)
+                    .setParameter("accessToken", accessToken)
                     .getSingleResult();
 
             return authEntity;
@@ -73,5 +75,21 @@ public class UserDao {
             return null;
         }
     }
+
+    public int updateUserLogoutByToken(final String accessToken, final ZonedDateTime logoutAt) {
+        try {
+            int updateStatus = entityManager.createNamedQuery("userLogoutByAccessToken")
+                    .setParameter("accessToken", accessToken)
+                    .setParameter("logoutAt", logoutAt)
+                    .executeUpdate();
+
+            return updateStatus;
+
+        } catch (NoResultException nre) {
+            return -1;
+        }
+    }
+
+
 }
 
