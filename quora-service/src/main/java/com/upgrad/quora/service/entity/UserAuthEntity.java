@@ -9,11 +9,12 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 /**
  * This class maps to user_auth table in database
  * @author saif
+ * @author sanatt
  */
 @Entity
 @Table(name = "user_auth")
@@ -42,15 +43,15 @@ public class UserAuthEntity implements Serializable {
 
     // @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "login_at", length = 6)
-    private LocalDateTime loginAt;
+    private ZonedDateTime loginAt;
 
     // @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "expires_at", length = 6)
-    private LocalDateTime expiresAt;
+    private ZonedDateTime expiresAt;
 
     // @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "logout_at", length = 6)
-    private LocalDateTime logoutAt;
+    private ZonedDateTime logoutAt;
 
     public Integer getId() {
         return id;
@@ -84,27 +85,27 @@ public class UserAuthEntity implements Serializable {
         this.accessToken = accessToken;
     }
 
-    public LocalDateTime getLoginAt() {
+    public ZonedDateTime getLoginAt() {
         return loginAt;
     }
 
-    public void setLoginAt(LocalDateTime loginAt) {
+    public void setLoginAt(ZonedDateTime loginAt) {
         this.loginAt = loginAt;
     }
 
-    public LocalDateTime getExpiresAt() {
+    public ZonedDateTime getExpiresAt() {
         return expiresAt;
     }
 
-    public void setExpiresAt(LocalDateTime expiresAt) {
+    public void setExpiresAt(ZonedDateTime expiresAt) {
         this.expiresAt = expiresAt;
     }
 
-    public LocalDateTime getLogoutAt() {
+    public ZonedDateTime getLogoutAt() {
         return logoutAt;
     }
 
-    public void setLogoutAt(LocalDateTime logoutAt) {
+    public void setLogoutAt(ZonedDateTime logoutAt) {
         this.logoutAt = logoutAt;
     }
 
