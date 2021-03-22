@@ -6,9 +6,10 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
 /**
  * This class maps to question table in database
@@ -18,9 +19,7 @@ import java.time.LocalDateTime;
 @Table(name = "question")
 @NamedQueries(
         {
-                @NamedQuery(name = "questionByUuid", query = "select question from QuestionEntity question where question.uuid = :uuid"),
-                @NamedQuery(name = "getAllQuestion", query = "select qe from QuestionEntity qe"),
-                @NamedQuery(name = "getAllQuestionByUser", query = "select qe from QuestionEntity qe where qe.user.uuid = :uuid")
+                @NamedQuery(name = "getAllQuestions", query = "select qe from QuestionEntity qe")
         }
 )
 public class QuestionEntity implements Serializable {
@@ -31,16 +30,17 @@ public class QuestionEntity implements Serializable {
     private Integer id;
 
     @Column(name = "uuid")
+    @NotNull
     @Size(max = 200)
     private String uuid;
 
     @Column(name = "content")
-    @Size(max = 200)
+    @Size(max = 500)
     private String content;
 
     // @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date", length = 6)
-    private LocalDateTime date;
+    private ZonedDateTime date;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -70,11 +70,11 @@ public class QuestionEntity implements Serializable {
         this.content = content;
     }
 
-    public LocalDateTime getDate() {
+    public ZonedDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(ZonedDateTime date) {
         this.date = date;
     }
 
