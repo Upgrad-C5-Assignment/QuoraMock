@@ -21,6 +21,7 @@ import java.time.ZonedDateTime;
 @NamedQueries({
         @NamedQuery(name = "userAuthByAccessToken", query = "select ut from UserAuthEntity ut where ut.accessToken = :accessToken "),
         @NamedQuery(name = "userLogoutByAccessToken", query = "update UserAuthEntity ut set ut.logoutAt = :logoutAt where ut.accessToken = :accessToken")
+
 })
 public class UserAuthEntity implements Serializable {
 
@@ -123,4 +124,5 @@ public class UserAuthEntity implements Serializable {
     @Override
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.MULTI_LINE_STYLE);}
+
 }
