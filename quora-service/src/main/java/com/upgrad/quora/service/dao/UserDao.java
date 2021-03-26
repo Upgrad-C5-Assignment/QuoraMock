@@ -37,6 +37,15 @@ public class UserDao {
         }
     }
 
+    public UserEntity getUserByUuid(String uuid) {
+        try {
+            return entityManager.createNamedQuery("userByUuid", UserEntity.class)
+                    .setParameter("uuid", uuid).getSingleResult();
+        } catch (NoResultException exception) {
+            return null;
+        }
+    }
+
     public UserEntity getUserByEmail(String email) {
         try {
             return entityManager.createNamedQuery("userByEmail", UserEntity.class).setParameter("email", email).getSingleResult();

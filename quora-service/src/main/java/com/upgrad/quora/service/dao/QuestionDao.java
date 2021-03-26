@@ -30,4 +30,9 @@ public class QuestionDao {
 			return null;
 		}
 	}
+
+	public List<QuestionEntity> getAllQuestionsByUser(final String accessToken, final String uuid) {
+		return entityManager.createNamedQuery("allQuestionsByUserId", QuestionEntity.class).setParameter("uuid", uuid).getResultList();
+	}
+
 }

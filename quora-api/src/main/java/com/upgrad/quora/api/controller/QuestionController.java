@@ -8,14 +8,12 @@ import com.upgrad.quora.service.business.QuestionService;
 import com.upgrad.quora.service.entity.QuestionEntity;
 import com.upgrad.quora.service.entity.UserAuthEntity;
 import com.upgrad.quora.service.exception.AuthorizationFailedException;
+import com.upgrad.quora.service.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.ZonedDateTime;
 import java.util.LinkedList;
@@ -38,6 +36,21 @@ public class QuestionController {
 		UserAuthEntity userAuthEntity = commonService.authorizeUser(authToken);
 
 		List<QuestionEntity> allQuestions = questionService.getAllQuestions();
+		List<QuestionDetailsResponse> responseList = new LinkedList();
+
+		for(QuestionEntity questionEntity : allQuestions) {
+			responseList.add(new QuestionDetailsResponse().id(questionEntity.getUuid()).content(questionEntity.getContent()));
+		}
+
+		return new ResponseEntity<List<QuestionDetailsResponse>>(responseList, HttpStatus.OK);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, path="/all/{userId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<List<QuestionDetailsResponse>> getAllQuestionsByUser(@PathVariable("userId") final String userId, @RequestHeader("authorization") final String authToken) throws AuthorizationFailedException, UserNotFoundException {
+
+		UserAuthEntity userAuthEntity = commonService.authorizeUser(authToken);
+
+		List<QuestionEntity> allQuestions = questionService.getAllQuestionsByUser(userId, authToken);
 		List<QuestionDetailsResponse> responseList = new LinkedList();
 
 		for(QuestionEntity questionEntity : allQuestions) {
