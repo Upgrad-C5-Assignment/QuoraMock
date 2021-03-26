@@ -63,7 +63,7 @@ public class QuestionControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("code").value("ATHR-002"));
     }
 
-    /*//This test case passes when you try to edit the question but the JWT token entered does not exist in the database.
+    //This test case passes when you try to edit the question but the JWT token entered does not exist in the database.
     @Test
     public void editQuestionWithNonExistingAccessToken() throws Exception {
         mvc.perform(MockMvcRequestBuilders.put("/question/edit/database_question_uuid?content=edited_question").contentType(MediaType.APPLICATION_JSON_UTF8_VALUE).header("authorization", "non_existing_access_token"))
@@ -95,7 +95,7 @@ public class QuestionControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("code").value("QUES-001"));
     }
 
-    //This test case passes when you try to delete the question but the JWT token entered does not exist in the database.
+    /*//This test case passes when you try to delete the question but the JWT token entered does not exist in the database.
     @Test
     public void deleteQuestionWithNonExistingAccessToken() throws Exception {
         mvc.perform(MockMvcRequestBuilders.delete("/question/delete/database_question_uuid").header("authorization", "non_existing_access_token"))
@@ -128,6 +128,8 @@ public class QuestionControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("code").value("QUES-001"));
     }
 
+     */
+
     //This test case passes when you try to get all the questions posted by a specific user but the JWT token entered does not exist in the database.
     @Test
     public void getAllQuestionsByUserWithNonExistingAccessToken() throws Exception {
@@ -151,6 +153,6 @@ public class QuestionControllerTest {
                 .andExpect(status().isNotFound())
                 .andExpect(MockMvcResultMatchers.jsonPath("code").value("USR-001"));
     }
-*/
+
 
 }

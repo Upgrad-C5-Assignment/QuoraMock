@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47a15d9d-c79e-46a9-bbbf-df38ac55657d" name="Default Changelist" comment="questionEntity added">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/controller/QuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/controller/QuestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quora-db/src/main/resources/config/localhost.properties" beforeDir="false" afterPath="$PROJECT_DIR$/quora-db/src/main/resources/config/localhost.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/exception/RestExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/src/main/java/com/upgrad/quora/api/exception/RestExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quora-api/src/test/java/com/upgrad/quora/api/controller/QuestionControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-api/src/test/java/com/upgrad/quora/api/controller/QuestionControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/QuestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/business/QuestionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/dao/QuestionDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/dao/QuestionDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/dao/UserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/entity/QuestionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/entity/QuestionEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/entity/UserAuthEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/quora-service/src/main/java/com/upgrad/quora/service/entity/UserAuthEntity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +199,7 @@
       <workItem from="1616656010456" duration="1976000" />
       <workItem from="1616687868361" duration="148000" />
       <workItem from="1616688071421" duration="397000" />
-      <workItem from="1616689370116" duration="9429000" />
+      <workItem from="1616689370116" duration="17983000" />
     </task>
     <task id="LOCAL-00001" summary="questionEntity added">
       <created>1616130666283</created>
@@ -246,38 +243,38 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1616688435624" />
-    <state width="1323" height="163" key="GridCell.Tab.0.bottom" timestamp="1616692446205">
+    <state width="1323" height="117" key="GridCell.Tab.0.bottom" timestamp="1616776723095">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="163" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1616692446205" />
-    <state width="1323" height="163" key="GridCell.Tab.0.center" timestamp="1616692446204">
+    <state width="1323" height="117" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1616776723095" />
+    <state width="1323" height="117" key="GridCell.Tab.0.center" timestamp="1616776723095">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="163" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1616692446204" />
-    <state width="1323" height="163" key="GridCell.Tab.0.left" timestamp="1616692446204">
+    <state width="1323" height="117" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1616776723095" />
+    <state width="1323" height="117" key="GridCell.Tab.0.left" timestamp="1616776723095">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="163" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1616692446204" />
-    <state width="1323" height="163" key="GridCell.Tab.0.right" timestamp="1616692446205">
+    <state width="1323" height="117" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1616776723095" />
+    <state width="1323" height="117" key="GridCell.Tab.0.right" timestamp="1616776723095">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="163" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1616692446205" />
-    <state width="1323" height="477" key="GridCell.Tab.1.bottom" timestamp="1616691652553">
+    <state width="1323" height="117" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1616776723095" />
+    <state width="1323" height="117" key="GridCell.Tab.1.bottom" timestamp="1616776723096">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="477" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1616691652553" />
-    <state width="1323" height="477" key="GridCell.Tab.1.center" timestamp="1616691652553">
+    <state width="1323" height="117" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1616776723096" />
+    <state width="1323" height="117" key="GridCell.Tab.1.center" timestamp="1616776723096">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="477" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1616691652552" />
-    <state width="1323" height="477" key="GridCell.Tab.1.left" timestamp="1616691652552">
+    <state width="1323" height="117" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1616776723096" />
+    <state width="1323" height="117" key="GridCell.Tab.1.left" timestamp="1616776723095">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="477" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1616691652552" />
-    <state width="1323" height="477" key="GridCell.Tab.1.right" timestamp="1616691652553">
+    <state width="1323" height="117" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1616776723095" />
+    <state width="1323" height="117" key="GridCell.Tab.1.right" timestamp="1616776723096">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="477" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1616691652553" />
+    <state width="1323" height="117" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1616776723096" />
     <state x="184" y="0" key="SettingsEditor" timestamp="1616690051565">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -286,6 +283,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1616689620893" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1616778044355">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1616778044355" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
