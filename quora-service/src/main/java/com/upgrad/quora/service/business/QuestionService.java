@@ -46,7 +46,8 @@ public class QuestionService {
 
 		if (userAuthEntity == null) {
 			throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
-		} else if (userAuthEntity.getLogoutAt() != null) {
+		}
+		else if (userAuthEntity.getLogoutAt() != null) {
 			throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to get all questions posted by a specific user");
 		}
 
@@ -65,7 +66,8 @@ public class QuestionService {
 
 		if (userAuthEntity == null) {
 			throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
-		} else if (userAuthEntity.getLogoutAt() != null) {
+		}
+		else if (userAuthEntity.getLogoutAt() != null) {
 			throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to edit the question");
 		}
 
@@ -82,5 +84,29 @@ public class QuestionService {
 		return questionDao.editQuestionContent(questionEntity);
 	}
 
+	@Transactional(propagation = Propagation.REQUIRED)
+	public QuestionEntity deleteQuestion(final String questionId, final String authToken) throws AuthorizationFailedException, InvalidQuestionException {
+
+		UserAuthEntity userAuthEntity = commonService.authorizeUser(authToken);
+		QuestionEntity questionEntity = questionDao.getQuestionById(questionId);
+
+		if (userAuthEntity == null) {
+			throw new AuthorizationFailedException("ATHR-001", "User has not signed in");
+		}
+		else if (userAuthEntity.getLogoutAt() != null) {
+			throw new AuthorizationFailedException("ATHR-002", "User is signed out.Sign in first to delete a question");
+		}
+		if (questionEntity == null) {
+			throw new InvalidQuestionException("QUES-001", "Entered question uuid does not exist");
+		}
+		if (questionEntity.getUser().getUuid() == userAuthEntity.getUser().getUuid() || questionEntity.getUser().getRole() == "admin") {
+			return  questionDao.deleteQuestion(questionEntity);
+
+		}
+		else {
+			throw new AuthorizationFailedException("ATHR-003", "Only the question owner or admin can delete the question");
+		}
+
+	}
 
 }
