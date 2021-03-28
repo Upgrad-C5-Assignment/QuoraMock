@@ -10,6 +10,7 @@ import com.upgrad.quora.service.entity.UserAuthEntity;
 import com.upgrad.quora.service.exception.AnswerNotFoundException;
 import com.upgrad.quora.service.exception.AuthorizationFailedException;
 import com.upgrad.quora.service.exception.InvalidQuestionException;
+import com.upgrad.quora.service.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -17,6 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -58,5 +61,20 @@ public class AnswerController {
         AnswerDeleteResponse answerDeleteResponse = new AnswerDeleteResponse().id(answerId).status("ANSWER DELETED");
 
         return new ResponseEntity<>(answerDeleteResponse, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, path="answer/all/{questionId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<List<AnswerDetailsResponse>> getAllQuestionsByUser(@PathVariable("questionId") final String questionId, @RequestHeader("authorization") final String authToken) throws AuthorizationFailedException, UserNotFoundException, InvalidQuestionException {
+
+        List<AnswerEntity> allAnswers = answerService.getAllAnswersByQuestionId(questionId,authToken);
+        List<AnswerDetailsResponse> responseList = new LinkedList();
+        QuestionEntity questionEntity = questionService.getQuestionById(questionId);
+
+        for(AnswerEntity answerEntity : allAnswers) {
+            responseList.add(new AnswerDetailsResponse().id(questionEntity.getUuid()).questionContent(questionEntity.getContent()).answerContent(answerEntity.getAns()));
+        }
+
+        return new ResponseEntity<>(responseList, HttpStatus.OK);
+
     }
 }
