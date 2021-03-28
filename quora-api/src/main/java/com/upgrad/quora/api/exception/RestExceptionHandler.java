@@ -53,7 +53,7 @@ public class RestExceptionHandler {
         );
     }
     @ExceptionHandler(AnswerNotFoundException.class)
-    public ResponseEntity<ErrorResponse> invalidQuestionException(AnswerNotFoundException exe, WebRequest request) {
+    public ResponseEntity<ErrorResponse> invalidAnswerException(AnswerNotFoundException exe, WebRequest request) {
         return new ResponseEntity<ErrorResponse>(
                 new ErrorResponse().code(exe.getCode()).message(exe.getErrorMessage()), HttpStatus.NOT_FOUND
         );

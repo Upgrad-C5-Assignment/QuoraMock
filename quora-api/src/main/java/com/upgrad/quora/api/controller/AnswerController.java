@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping( "/question")
 public class AnswerController {
      @Autowired
      private AnswerService answerService;
@@ -31,10 +30,10 @@ public class AnswerController {
     private QuestionService questionService;
     @Autowired
     private CommonService commonService;
-    @RequestMapping(method = RequestMethod.POST, path = "/{questionId}/answer/create", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(method = RequestMethod.POST, path = "/question/{questionId}/answer/create", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<AnswerResponse> createAnswer(@RequestHeader("authorization") final String authToken, @PathVariable("questionId") final String questionId, final AnswerRequest answerRequest) throws AuthorizationFailedException, InvalidQuestionException {
-        UserAuthEntity userAuthEntity = commonService.authorizeUser(authToken);
         QuestionEntity questionEntity = questionService.getQuestionById(questionId);
+        UserAuthEntity userAuthEntity = commonService.authorizeUser(authToken);
         AnswerEntity answerEntity = new AnswerEntity();
         answerEntity.setAns(answerRequest.getAnswer());
         answerEntity.setQuestion(questionEntity);
@@ -63,7 +62,7 @@ public class AnswerController {
         return new ResponseEntity<>(answerDeleteResponse, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, path="answer/all/{questionId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(method = RequestMethod.GET, path="/answer/all/{questionId}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<List<AnswerDetailsResponse>> getAllQuestionsByUser(@PathVariable("questionId") final String questionId, @RequestHeader("authorization") final String authToken) throws AuthorizationFailedException, UserNotFoundException, InvalidQuestionException {
 
         List<AnswerEntity> allAnswers = answerService.getAllAnswersByQuestionId(questionId,authToken);
