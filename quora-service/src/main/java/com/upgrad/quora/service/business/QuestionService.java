@@ -58,6 +58,17 @@ public class QuestionService {
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
+	public QuestionEntity getQuestionById(final String questionId) throws InvalidQuestionException {
+
+		QuestionEntity questionEntity = questionDao.getQuestionById(questionId);
+		if(questionEntity == null){
+			throw new InvalidQuestionException("QUES-001","The question entered is invalid");
+		}
+
+		return questionEntity;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
 	public QuestionEntity editQuestionContent(final String content, final String questionId, final String authToken) throws AuthorizationFailedException, InvalidQuestionException {
 
 		UserAuthEntity userAuthEntity = commonService.authorizeUser(authToken);
